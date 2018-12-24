@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Modyfikuj dane kategorii</h2>
+<mat-dialog-content>
+  <form name="categoryForm" ng-controller="ChangeDataDialogComponent">
+  <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+   <input matInput [(ngModel)]='selectedCategory.name' name='nazwa' placeholder="Nowa nazwa kategorii" required>
+   <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+ </mat-form-field>
+ <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+    <input matInput [(ngModel)]='selectedCategory.description' name='opis' placeholder="Nowy opis kategorii" required>
+    <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+  </mat-form-field>
+ </form>
+ </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)='onCancelClick()'>Anuluj</button>
+    <button mat-button (click)='onSaveClick()'>Zapisz</button>
+</mat-dialog-actions>
+  

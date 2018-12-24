@@ -1,0 +1,30 @@
+  <div class="wrapper">
+      <div class="specialists">
+        <mat-accordion>
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="firstName">
+              <mat-header-cell *matHeaderCellDef><h1>Specjaliści</h1> </mat-header-cell>
+      
+              <mat-cell *matCellDef="let element">
+              <mat-expansion-panel hideToggle= "true">
+                  <mat-expansion-panel-header class="mat-elevation-z0">
+                    <mat-panel-title>
+                    {{element.degree}} {{element.firstName}} {{element.lastName}}              
+                  </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>{{element.description}} </p>    
+                  <p>Porada {{element.category?.name}} </p>                                          
+                  <!--przenosi do formularza "specjalista (wczytany), kategoria do wyboru --> 
+                  <button mat-raised-button (click)="changeSpecialistData(element)">Modyfikuj dane</button>
+                  <button mat-raised-button (click)="deleteSpecialistDialog(element.id)">Usuń specjalistę</button>     
+                </mat-expansion-panel>        
+            </mat-cell>
+            </ng-container>
+            <button mat-raised-button>Dodaj specjalistę</button>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-accordion>
+      </div>
+      </div>
+

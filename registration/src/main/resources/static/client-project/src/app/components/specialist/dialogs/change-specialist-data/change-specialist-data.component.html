@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Modyfikuj dane specjalisty</h2>
+<mat-dialog-content>
+  <form name="specialistForm" ng-controller="ChangeSpecialistDataComponent">
+    <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+      <input matInput [(ngModel)]='selectedSpecialist.firstName' name='imie' placeholder="Nowe imię">
+      <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+      <input matInput [(ngModel)]='selectedSpecialist.lastName' name='nazwisko' placeholder="Nowe nazwisko">
+      <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+      <input matInput [(ngModel)]='selectedSpecialist.degree' name='stopien' placeholder="Nowy stopień">
+      <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+      <input matInput [(ngModel)]='selectedSpecialist.description' name='opis' placeholder="Nowy opis">
+      <!-- (onSelectionChange)="onSelectionChange(name, description)"> -->
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <mat-select [(ngModel)]="selectedSpecialist.category" placeholder="Kategoria konsultacji">
+        <mat-option *ngFor="let category of categories" [value]="category.name">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)='onCancelClick()'>Anuluj</button>
+  <button mat-button (click)='onSaveClick()'>Zapisz</button>
+</mat-dialog-actions>

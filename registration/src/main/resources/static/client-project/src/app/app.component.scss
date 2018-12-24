@@ -1,0 +1,105 @@
+
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+div{
+  display: flex;
+
+  height: 100%;
+  
+  justify-content: center;
+
+}
+
+
+.mat-sidenav-container {
+    height: 100%;
+    margin: 10px;
+    flex:1;
+    background-image: url("trianglify2.png");
+    background-size: 100%;
+  }
+
+  .mat-sidenav{
+      width: 20%;
+  }
+
+  // .router{
+  //   background-image: url("tra.png");
+  // background-repeat: no-repeat;
+  // }
+
+.greeting{
+  margin-left: 10px;
+  grid-area: greeting;
+  font-size: 25px;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.account-details {
+    grid-area: details;
+    display: flex;
+    flex-flow: column;
+    align-self: center;
+    // background-image: url("logo.png");
+    background: linear-gradient(to right, #d1d4d6, #eef2f3)!important;
+
+
+    //background: linear-gradient(to right, #FFEEEE, #DDEFBB)!important;
+    //background: linear-gradient(to right, #D7DDE8, #98a0b3)!important;
+  }
+
+  .name {
+    // margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 140px;
+  }
+  
+  .email{
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-left: 140px;
+  }
+  
+  .mat-nav-list{
+      margin-top: 20px;
+  }
+
+  .menu-header{
+    height: 200px;
+    //background-image: url("fresh.jpg");
+    background: linear-gradient(to right, #d1d4d6, #eef2f3) !important;
+    background-size: 400px 300px;
+    background-repeat: no-repeat;
+    align-content: center;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 255, 0.2);
+    width: 100%;
+  }
+
+  .mat-toolbar{
+    background: linear-gradient(to right, #d1d4d6, #eef2f3)!important;
+      height: 110px;
+  }
+
+  .mat-toolbar-row{
+    justify-content: space-between!important;
+  }
+
+
+  .mat toolbar a {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+

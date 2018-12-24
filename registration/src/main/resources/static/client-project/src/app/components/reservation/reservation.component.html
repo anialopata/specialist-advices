@@ -1,0 +1,50 @@
+<mat-horizontal-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Wybierz kategorię</ng-template>
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedVisit.category" placeholder="Kategoria konsultacji" name="category">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperNext (click)='getSpecialistsForCategory(selectedVisit.category)'>Dalej</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Wybierz specjaliste</ng-template>
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedVisit.specialist" placeholder="Specjalista" name="specialist">
+        <mat-option *ngFor="let specialist of specialists" [value]="specialist">
+          {{specialist.degree}} {{specialist.firstName}} {{specialist.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperPrevious>Wstecz</button>
+      <button mat-button matStepperNext (click)='getWeek()'>Dalej</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Wybierz termin</ng-template>
+
+      <!-- </div> -->
+
+    <td *ngFor="let key of weekKeys" class="inline-div">
+      <!-- <div>{{ key }}: </div>   -->
+     
+      <div class="date" *ngFor="let value of week[key]">
+           {{value.date | date: 'dd.MM'}}:
+          
+        <button mat-raised-button (click)="getVisitData(value)">
+          {{ value.date | date: 'HH:mm' }}
+        </button>
+      </div>      
+    </td>
+    <div>
+      <button mat-button matStepperPrevious>Wstecz</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="categories">
+    <mat-accordion>
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>
+            <h1>KATEGORIE PORAD SPECJALISTYCZNYCH</h1>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let element">
+            <mat-expansion-panel hideToggle="true">
+              <mat-expansion-panel-header class="mat-elevation-z0">
+                <mat-panel-title>
+                  PORADA {{element.name}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{element.description}} </p>
+              <p>Specjaliści:</p>
+              <mat-list *ngFor="let specialist of element.specialists">
+                  <mat-list-item>{{specialist.degree}} {{specialist.firstName}} {{specialist.lastName}}</mat-list-item>
+              </mat-list>
+              <button mat-raised-button (click)="changeDataDialog(element)">Modyfikuj dane</button>
+              <button mat-raised-button (click)="deleteCategoryDialog(element.id)">Usuń kategorię</button>              
+            </mat-expansion-panel>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-accordion>
+    <button mat-raised-button style="float: right; margin-top: 20px;" [routerLink]="['/category/form']">Dodaj kategorię</button>
+  </div>
+</div>

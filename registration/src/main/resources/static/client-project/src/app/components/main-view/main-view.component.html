@@ -1,0 +1,45 @@
+<!-- 
+<div class=container>
+  <div class=top>
+    <button mat-raised-button> Umów wizytę </button>
+  </div>
+  <div class=view>
+    <button mat-fab> Kategorie porad </button> 
+    <button mat-fab> Specjaliści </button> 
+    <button mat-fab> Kontakt </button> 
+  </div>
+</div>
+
+ -->
+ <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fredericka+the+Great|Paytone+One|Varela+Round|Catamaran" rel="stylesheet"> 
+ <div class = "container">
+
+      <div class="visit_card" (click)="openDetails()">
+            <div class="header-main" [routerLink]="['/reservation']">Umów wizytę</div>
+      </div>
+
+      <div class = "box">
+     
+      <div class="categories_card" (click)="openDetails()">
+        <div class="header" [routerLink]="['/categories']">Kategorie</div>
+
+      </div>
+
+      <div class="specialists_card" (click)="openDetails()">
+          <div class="header" [routerLink]="['/specialists']">Nasi specjaliści</div>
+        </div>
+
+      </div>
+
+</div>
+ <!-- <section class="specialist_card" (click)="openDetails()">
+   <div class ="details">
+      <span class="header">Specjaliści</span>
+   </div>
+</section>
+<section class="category_card" (click)="openDetails()">
+    <div class ="details">
+  <span class="header">Kategorie</span>
+    </div>
+</section> -->
+

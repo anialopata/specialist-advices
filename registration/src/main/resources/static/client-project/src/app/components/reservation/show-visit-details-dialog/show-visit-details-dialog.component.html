@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Potwierdź wizytę</h2>
+<mat-dialog-content>
+  <p> Kategoria: konsultacja {{selectedVisit.category.name}} </p>
+  <p> Specjalista: {{selectedVisit.specialist.degree}} {{selectedVisit.specialist.firstName}}
+    {{selectedVisit.specialist.lastName}}</p>
+  <p> Data: {{selectedVisit.date | date:'dd.MM HH:mm'}}</p>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="selectedVisit.note" placeholder="Uwagi" name="note"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)='onCancelClick()'>Anuluj</button>
+  <button mat-button (click)='onSaveClick()'>Potwierdź</button>
+</mat-dialog-actions>

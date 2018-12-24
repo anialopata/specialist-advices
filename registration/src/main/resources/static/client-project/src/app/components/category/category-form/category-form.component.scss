@@ -1,0 +1,22 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 250px;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  .header {
+      margin-bottom: 30px;
+      font-size: 30px;
+  }
+  
+  .button-row button{
+    margin-right: 8px;
+  }  
+
+  .mat-raised-button{
+      margin-top: 30px;
+  }

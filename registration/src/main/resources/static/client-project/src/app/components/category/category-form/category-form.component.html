@@ -1,0 +1,27 @@
+<div class="example-container">
+
+  <div class="header">
+    Dodaj kategorię konsultacji do systemu
+  </div>
+  <mat-form-field>
+    <input matInput [(ngModel)]="category.name" placeholder="Nazwa konsultacji" name="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="category.description" placeholder="Opis" name="description"></textarea>
+        </mat-form-field>
+  
+
+      <!-- <mat-form-field>
+          <mat-select [(ngModel)]="category.specialist" placeholder="Specjalista">
+            <mat-option *ngFor="let specialist of specialists" [value]="specialist.firstName"> 
+              {{specialist.degree}} {{specialist.firstName}} {{specialist.lastName}}
+            </mat-option> 
+          </mat-select>
+        </mat-form-field>
+     -->
+  
+        <div class="button-row">
+            <button mat-raised-button (click)='createCategory()' [routerLink]="['/categories']">Dodaj</button>      
+        </div>
+</div>

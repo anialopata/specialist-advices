@@ -1,0 +1,49 @@
+  <mat-toolbar>
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <mat-sidenav-container>
+         
+      <mat-sidenav #drawer mode="over" closed role="navigation">
+          <section class="menu-header">          
+                <span class="greeting">Witaj</span>
+              <div class="account-details">
+                <span class="name">Jan Kowalski</span>
+                <span class="email">jan@mail.com</span>
+            </div>
+      </section>
+        <mat-nav-list>
+          <a mat-list-item>Moje wizyty</a>
+          <a mat-list-item>Edytuj profil</a>
+          <a mat-list-item>Wyloguj</a>
+          <a mat-list-item [routerLink]="['/specialists/all']">Historia specjalistów</a>
+          <a mat-list-item [routerLink]="['/patients']">Historia pacjentów</a>
+          <a mat-list-item [routerLink]="['/visits']">Historia wizyt</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class = "router">
+          <router-outlet></router-outlet>
+      </div> 
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    
+
+
+    
+    <!-- <div class=container>
+        <div class=top>
+          <button mat-raised-button> Umów wizytę </button>
+        </div>
+        <div class=view>
+          <button mat-fab> Kategorie porad </button> 
+          <button mat-fab> Specjaliści </button> 
+          <button mat-fab> Kontakt </button> 
+        </div>
+      </div> -->
