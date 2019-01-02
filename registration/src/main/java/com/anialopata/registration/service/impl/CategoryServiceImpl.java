@@ -9,6 +9,8 @@ import com.anialopata.registration.model.Category;
 import com.anialopata.registration.repository.CategoryRepository;
 import com.anialopata.registration.repository.SpecialistRepository;
 import com.anialopata.registration.service.CategoryService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

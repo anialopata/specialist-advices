@@ -3,11 +3,8 @@ package com.anialopata.registration.security.config;
 import com.anialopata.registration.security.service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -16,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
@@ -28,24 +26,31 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private static String REALM="REALM";
     private static final int TWENTY_DAYS = 60 * 60 * 24 * 20;
 
+    private final AuthenticationManager authenticationManager;
+
+    private final PasswordEncoder passwordEncoder;
+
     private final TokenStore tokenStore;
 
     private final UserApprovalHandler userApprovalHandler;
 
-    private final AuthenticationManager authenticationManager;
+    private final MyUserDetailService myUserDetailService;
 
-    private final MyUserDetailService myUserDetailsService;
+    private final MyJwtCustomTokenConverter myJwtCustomTokenConverter;
 
-    private final PasswordEncoder passwordEncoder;
+    private final JwtAccessTokenConverter jwtAccessTokenConverter;
 
     @Autowired
-    public AuthorizationServerConfig(TokenStore tokenStore, UserApprovalHandler userApprovalHandler, @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager, MyUserDetailService myUserDetailsService, PasswordEncoder passwordEncoder) {
+    public AuthorizationServerConfig(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, TokenStore tokenStore, UserApprovalHandler userApprovalHandler, MyUserDetailService myUserDetailService, JwtAccessTokenConverter jwtTokenEnhancer, MyJwtCustomTokenConverter myJwtCustomTokenConverter, JwtAccessTokenConverter jwtAccessTokenConverter) {
+        this.authenticationManager = authenticationManager;
+        this.passwordEncoder = passwordEncoder;
         this.tokenStore = tokenStore;
         this.userApprovalHandler = userApprovalHandler;
-        this.authenticationManager = authenticationManager;
-        this.myUserDetailsService = myUserDetailsService;
-        this.passwordEncoder = passwordEncoder;
+        this.myUserDetailService = myUserDetailService;
+        this.myJwtCustomTokenConverter = myJwtCustomTokenConverter;
+        this.jwtAccessTokenConverter = jwtAccessTokenConverter;
     }
+
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -61,13 +66,19 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler)
-                .authenticationManager(authenticationManager)
-                .userDetailsService(myUserDetailsService);
+                endpoints.tokenStore(tokenStore).tokenEnhancer(jwtAccessTokenConverter)
+                        .userApprovalHandler(userApprovalHandler).authenticationManager(authenticationManager)
+                .userDetailsService(myUserDetailService);
+//        endpoints.tokenStore(tokenStore()).userApprovalHandler(userApprovalHandler)
+//                .authenticationManager(authenticationManager)
+//                .userDetailsService(myUserDetailsService);
     }
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.realm(REALM);
     }
+
+
+
 
 }

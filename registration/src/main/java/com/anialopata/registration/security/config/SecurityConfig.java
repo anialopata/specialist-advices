@@ -24,24 +24,24 @@ import org.springframework.security.oauth2.provider.approval.ApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import springfox.documentation.annotations.ApiIgnore;
-@Order(SecurityProperties.BASIC_AUTH_ORDER)
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final ClientDetailsService clientDetailsService;
-
-    private final MyUserDetailService myUserDetailsService;
+    @Autowired
+    private  ClientDetailsService clientDetailsService;
 
     @Autowired
-    public SecurityConfig(ClientDetailsService clientDetailsService, MyUserDetailService myUserDetailsService) {
-        this.clientDetailsService = clientDetailsService;
-        this.myUserDetailsService = myUserDetailsService;
-    }
+    private  MyUserDetailService myUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -73,10 +73,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new InMemoryTokenStore();
+//    }
+
+    @Bean
+    public MyJwtCustomTokenConverter myJwtCustomTokenConverter() {
+
+        return new MyJwtCustomTokenConverter();
+
+    }
+
     @Bean
     public TokenStore tokenStore() {
-        return new InMemoryTokenStore();
+        return new JwtTokenStore(myJwtCustomTokenConverter());
     }
+
+
 
     @Bean
     @Autowired

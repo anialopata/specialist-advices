@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.anialopata.registration.dto.UserDto;
 import com.anialopata.registration.model.*;
 import com.anialopata.registration.model.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,12 +16,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails {
 
+    private long id;
+    private User user;
     private static final long serialVersionUID = 1L;
     private Collection<? extends GrantedAuthority> authorities;
     private String password;
     private String username;
 
     public MyUserDetails(User user) {
+        this.user = user;
+        this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = translate(user.getRoles());
@@ -51,6 +56,10 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override
