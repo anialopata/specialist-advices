@@ -37,6 +37,7 @@ import { AllSpecialistsComponent } from './components/specialist/all-specialists
 import { DeletePatientComponent } from './components/patient/dialogs/delete-patient/delete-patient.component';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
+import { ChangePatientDataComponent } from './components/patient/dialogs/change-patient-data/change-patient-data.component';
 
 registerLocaleData(localePl);
 
@@ -63,7 +64,8 @@ registerLocaleData(localePl);
     LoginComponent,
     UserVisitsDialogComponent,
     AllSpecialistsComponent,
-    DeletePatientComponent
+    DeletePatientComponent,
+    ChangePatientDataComponent
   ],
   imports: [
     BrowserModule,

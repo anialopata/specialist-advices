@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Patient } from '../models/patient.model';
+import { LoggedUser } from '../models/logged-user';
 
 
 @Injectable({
@@ -35,8 +36,8 @@ export class PatientService {
   }
 
 
-  public updatePatient(patient: Patient) {
-    return this.http.put<Patient>('//localhost:8080/api/patients' + patient.id, patient);
+  public updatePatient(patient: LoggedUser) {
+    return this.http.put<LoggedUser>('//localhost:8080/api/patients/' + patient.id, patient);
   }
 
     getToken() {

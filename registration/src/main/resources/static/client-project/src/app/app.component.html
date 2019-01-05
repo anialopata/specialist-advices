@@ -17,13 +17,13 @@
       <section class="menu-header">          
             <span class="greeting">Witaj</span>
           <div class="account-details">
-            <span class="name">{{user}}</span>
-            <!-- <span class="email">{{email}}</span> -->
+            <span class="name">{{loggedUser.username}}</span>
+            <span class="email">{{loggedUser.email}}</span>
         </div>
   </section>
     <mat-nav-list>
       <a mat-list-item>Moje wizyty</a>
-      <a mat-list-item>Edytuj profil</a>
+      <a mat-list-item [routerLink]="['/edit/patient']">Edytuj profil</a>
       <a mat-list-item [routerLink]="['/specialists/all']">Historia specjalistów</a>
       <a mat-list-item [routerLink]="['/patients']">Historia pacjentów</a>
       <a mat-list-item [routerLink]="['/visits']">Historia wizyt</a>
