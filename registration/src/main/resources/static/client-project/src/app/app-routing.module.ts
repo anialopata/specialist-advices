@@ -6,7 +6,6 @@ import { SpecialistComponent } from './components/specialist/specialist.componen
 import { SpecialistFormComponent } from './components/specialist/specialist-form/specialist-form.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { PatientFormComponent } from './components/patient/patient-form/patient-form.component';
-import { VisitFormComponent } from './components/visit/visit-form/visit-form.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { ChangeDataDialogComponent } from './components/category/dialogs/change-data-dialog/change-data-dialog.component';
@@ -22,7 +21,6 @@ import { LoginComponent } from './components/login/login.component';
 import { UserVisitsDialogComponent } from './components/visit/user-visits-dialog/user-visits-dialog.component';
 import { AllSpecialistsComponent } from './components/specialist/all-specialists/all-specialists.component';
 import { DeletePatientComponent } from './components/patient/dialogs/delete-patient/delete-patient.component';
-
 
 
 const routes: Routes = [

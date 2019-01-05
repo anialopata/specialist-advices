@@ -20,7 +20,6 @@ import { CategoryFormComponent } from './components/category/category-form/categ
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientFormComponent } from './components/patient/patient-form/patient-form.component';
 import { VisitComponent } from './components/visit/visit.component';
-import { VisitFormComponent } from './components/visit/visit-form/visit-form.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { ChangeDataDialogComponent } from './components/category/dialogs/change-data-dialog/change-data-dialog.component';
 import { DeleteCategoryComponent } from './components/category/dialogs/delete-category/delete-category.component';
@@ -52,7 +51,6 @@ registerLocaleData(localePl);
     PatientComponent,
     PatientFormComponent,
     VisitComponent,
-    VisitFormComponent,
     WelcomePageComponent,
     ChangeDataDialogComponent,
     DeleteCategoryComponent,
@@ -65,7 +63,7 @@ registerLocaleData(localePl);
     LoginComponent,
     UserVisitsDialogComponent,
     AllSpecialistsComponent,
-    DeletePatientComponent,
+    DeletePatientComponent
   ],
   imports: [
     BrowserModule,

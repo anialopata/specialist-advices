@@ -4,17 +4,19 @@ import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { PatientService } from '../services/patient.service';
+import { AuthService } from '../services/auth.service';
+import { LoggedUser } from '../models/logged-user';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+    constructor(public authService: AuthService) { }
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
+        const loggedUser = localStorage.getItem('loggedUser');
+        if (loggedUser && JSON.parse(loggedUser).token) {
             request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${currentUser.token}`
-                }
+                headers: request.headers.set('Authorization', 'Bearer ' + JSON.parse(loggedUser).token)
             });
         }
 
@@ -22,6 +24,17 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 }
 
+// intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+//     const currentUser = JSON.parse(localStorage.getItem('userToken'));
+//     if (currentUser) {
+//         request = request.clone({
+//             setHeaders: {
+//                 Authorization: `Bearer ${currentUser}`
+//             }
+//         });
+//     }
+
+//     return next.handle(request);
 
     // constructor(private injector: Injector, private router: Router) { }
 

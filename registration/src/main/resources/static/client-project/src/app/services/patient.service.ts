@@ -39,18 +39,6 @@ export class PatientService {
     return this.http.put<Patient>('//localhost:8080/api/patients' + patient.id, patient);
   }
 
-  patientAuthentication(username, password) {
-    const data = 'username=' + username + '&password=' + password + '&grant_type=password' +
-    '&client_secret=client' + '&client_id=client';
-
-    const reqHeader = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + btoa('client' + ':' + 'client')
-    });
-
-    return this.http.post('http://localhost:8080/oauth/token' , data, {headers: reqHeader});
-  }
-
     getToken() {
     return localStorage.getItem('token');
   }

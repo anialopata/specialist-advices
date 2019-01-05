@@ -19,9 +19,5 @@ export class MainViewComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.specialistService.getSpecialists().subscribe(data => {
-      console.log(data);
-    });
+    }
   }
-
-}

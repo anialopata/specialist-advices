@@ -18,6 +18,9 @@ public class MyUserDetails implements UserDetails {
 
     private long id;
     private User user;
+    private String firstName;
+    private String lastName;
+    private String email;
     private static final long serialVersionUID = 1L;
     private Collection<? extends GrantedAuthority> authorities;
     private String password;
@@ -26,6 +29,9 @@ public class MyUserDetails implements UserDetails {
     public MyUserDetails(User user) {
         this.user = user;
         this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.email = user.getEmail();
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = translate(user.getRoles());
@@ -60,6 +66,18 @@ public class MyUserDetails implements UserDetails {
 
     public long getId() {
         return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
