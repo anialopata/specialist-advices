@@ -34,7 +34,6 @@ public class VisitDto {
 
     private Specialist specialist;
 
-    @JsonIgnore
     private Patient patient;
 
     @JsonProperty("visit_url")

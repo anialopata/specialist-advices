@@ -6,6 +6,7 @@ import com.anialopata.registration.mapper.SpecialistMapper;
 import com.anialopata.registration.mapper.VisitMapper;
 import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.repository.CategoryRepository;
+import com.anialopata.registration.repository.PatientRepository;
 import com.anialopata.registration.repository.SpecialistRepository;
 import com.anialopata.registration.repository.VisitRepository;
 import com.anialopata.registration.service.impl.SpecialistServiceImpl;
@@ -39,11 +40,12 @@ public class SpecialistServiceTest {
     VisitRepository visitRepository;
     CategoryMapper categoryMapper;
     CategoryRepository categoryRepository;
+    PatientRepository patientRepository;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        specialistService = new SpecialistServiceImpl(specialistRepository, specialistMapper, visitMapper, visitRepository, categoryMapper, categoryRepository){
+        specialistService = new SpecialistServiceImpl(specialistRepository, specialistMapper, visitMapper, visitRepository, categoryMapper, categoryRepository, patientRepository){
         };
     }
 

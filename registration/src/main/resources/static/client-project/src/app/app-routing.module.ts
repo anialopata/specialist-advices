@@ -21,7 +21,6 @@ import { LoginComponent } from './components/login/login.component';
 import { UserVisitsDialogComponent } from './components/visit/user-visits-dialog/user-visits-dialog.component';
 import { AllSpecialistsComponent } from './components/specialist/all-specialists/all-specialists.component';
 import { DeletePatientComponent } from './components/patient/dialogs/delete-patient/delete-patient.component';
-import { ChangePatientDataComponent } from './components/patient/dialogs/change-patient-data/change-patient-data.component';
 
 
 const routes: Routes = [
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: 'dashboard', component: MainViewComponent},
-  { path: 'dashboard', component: ChangePatientDataComponent},
 
   { path: 'reservation', component: ReservationComponent},
   { path: 'reservation', component: ShowVisitDetailsDialogComponent},
@@ -47,6 +45,7 @@ const routes: Routes = [
   { path: 'specialists', component: DeleteSpecialistComponent},
 
   { path: 'visits', component: VisitComponent},
+  { path: 'myvisits', component: UserVisitsDialogComponent},
 
   { path: 'specialists/all', component: AllSpecialistsComponent},
   { path: 'specialists/all', component: DeleteSpecialistComponent},

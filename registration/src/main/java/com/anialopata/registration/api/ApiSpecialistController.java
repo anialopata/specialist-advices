@@ -1,5 +1,6 @@
 package com.anialopata.registration.api;
 
+import com.anialopata.registration.dto.PatientDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.SpecialistListDto;
 import com.anialopata.registration.dto.VisitDto;
@@ -39,5 +40,5 @@ public interface ApiSpecialistController {
     Set<VisitDto> findSpecialistVisits(@PathVariable Long specialistId);
 
     @ResponseStatus(OK)
-    long addVisitToSpecialist(@PathVariable Long specialistId, @RequestBody VisitDto visitDto);
+    long addVisitToSpecialist(@PathVariable Long specialistId, @RequestBody VisitDto visitDto, @PathVariable Long patientId);
 }

@@ -80,9 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public MyJwtCustomTokenConverter myJwtCustomTokenConverter() {
-
         return new MyJwtCustomTokenConverter();
-
     }
 
     @Bean

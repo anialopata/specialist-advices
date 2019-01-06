@@ -1,25 +1,20 @@
 package com.anialopata.registration.service.impl;
 
-import com.anialopata.registration.dto.CategoryDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.VisitDto;
-import com.anialopata.registration.exception.SpecialistNotAvailableException;
 import com.anialopata.registration.exception.UserNotFoundException;
 import com.anialopata.registration.mapper.CategoryMapper;
 import com.anialopata.registration.mapper.SpecialistMapper;
 import com.anialopata.registration.mapper.VisitMapper;
 import com.anialopata.registration.model.Category;
+import com.anialopata.registration.model.Patient;
 import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.model.Visit;
-import com.anialopata.registration.repository.CategoryRepository;
-import com.anialopata.registration.repository.SpecialistRepository;
-import com.anialopata.registration.repository.UserRepository;
-import com.anialopata.registration.repository.VisitRepository;
+import com.anialopata.registration.repository.*;
 import com.anialopata.registration.service.SpecialistService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,14 +34,16 @@ public class SpecialistServiceImpl implements SpecialistService {
     private final VisitRepository visitRepository;
     private final CategoryMapper categoryMapper;
     private final CategoryRepository categoryRepository;
+    private final PatientRepository patientRepository;
 
-    public SpecialistServiceImpl(SpecialistRepository specialistRepository, SpecialistMapper specialistMapper, VisitMapper visitMapper, VisitRepository visitRepository, CategoryMapper categoryMapper, CategoryRepository categoryRepository) {
+    public SpecialistServiceImpl(SpecialistRepository specialistRepository, SpecialistMapper specialistMapper, VisitMapper visitMapper, VisitRepository visitRepository, CategoryMapper categoryMapper, CategoryRepository categoryRepository, PatientRepository patientRepository) {
         this.specialistRepository = specialistRepository;
         this.specialistMapper = specialistMapper;
         this.visitMapper = visitMapper;
         this.visitRepository = visitRepository;
         this.categoryMapper = categoryMapper;
         this.categoryRepository = categoryRepository;
+        this.patientRepository = patientRepository;
     }
 
     @Override
@@ -136,18 +133,21 @@ public class SpecialistServiceImpl implements SpecialistService {
     }
 
     @Override
-    public long addVisitToSpecialist(Long specialistId, VisitDto visitDto) {
+    public long addVisitToSpecialist(Long specialistId, VisitDto visitDto, Long patientId) {
 
 //        if (!isSpecialistAvailable(specialistId, visitDto))
 //            throw new SpecialistNotAvailableException("Specialist with id = " + specialistId + " is not available at this time");
 
         Specialist specialist = specialistRepository.getOne(specialistId);
+        Patient patient = patientRepository.getOne(patientId);
         Visit visit = visitMapper.visitDtoToVisit(visitDto);
         visit.setSpecialist(specialist);
+        visit.setPatient(patient);
         visit.setCategory(specialist.getCategory());
         visitRepository.save(visit);
         specialist.addVisit(visit);
         specialistRepository.save(specialist);
+        patientRepository.save(patient);
 
         return visit.getId();
     }

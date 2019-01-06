@@ -4,6 +4,7 @@
   <p> Specjalista: {{selectedVisit.specialist.degree}} {{selectedVisit.specialist.firstName}}
     {{selectedVisit.specialist.lastName}}</p>
   <p> Data: {{selectedVisit.date | date:'dd.MM HH:mm'}}</p>
+  <p> Pacjent: {{loggedUser.username}}</p>
   <mat-form-field>
     <textarea matInput [(ngModel)]="selectedVisit.note" placeholder="Uwagi" name="note"></textarea>
   </mat-form-field>

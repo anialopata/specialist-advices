@@ -1,6 +1,7 @@
 package com.anialopata.registration.api.impl;
 
 import com.anialopata.registration.api.ApiSpecialistController;
+import com.anialopata.registration.dto.PatientDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.SpecialistListDto;
 import com.anialopata.registration.dto.VisitDto;
@@ -72,10 +73,10 @@ public class SpecialistController implements ApiSpecialistController {
     }
 
     @ApiOperation(value = "Add visit to Specialist")
-    @PostMapping("/{specialistId}/visits")
+    @PostMapping("/{specialistId}/visits/patient/{patientId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public long addVisitToSpecialist(@PathVariable Long specialistId, @RequestBody VisitDto visitDto){
-        return specialistService.addVisitToSpecialist(specialistId, visitDto);
+    public long addVisitToSpecialist(@PathVariable Long specialistId, @RequestBody VisitDto visitDto, @PathVariable Long patientId){
+        return specialistService.addVisitToSpecialist(specialistId, visitDto, patientId);
 
     }
 

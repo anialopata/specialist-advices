@@ -8,6 +8,7 @@ import { Category } from '../models/category.model';
 import { Visit } from '../models/visit.model';
 import { AstVisitor } from '@angular/animations/browser/src/dsl/animation_ast';
 import { VisitDto } from '../models/visit-dto';
+import { LoggedUser } from '../models/logged-user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -48,8 +49,8 @@ export class SpecialistService {
     return this.http.get<any>(`http://localhost:8080/api/v1/categories/${categoryId}/specialists`);
   }
 
-  public addVisitToSpecialist(specialistId: number, visit: VisitDto): Observable<any> {
-    return this.http.post<VisitDto>(`//localhost:8080/api/v1/specialists/${specialistId}/visits/`, visit);
+  public addVisitToSpecialist(specialistId: number, visit: VisitDto, patientId: number): Observable<any> {
+    return this.http.post<VisitDto>(`//localhost:8080/api/v1/specialists/${specialistId}/visits/patient/${patientId}`, visit);
   }
 
 

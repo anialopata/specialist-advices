@@ -3,6 +3,7 @@ import { VisitService } from 'src/app/services/visit.service';
 import { Visit } from 'src/app/models/visit.model';
 import { DeleteVisitDialogComponent } from './delete-visit-dialog/delete-visit-dialog.component';
 import { MatDialog } from '@angular/material';
+import { LoggedUser } from 'src/app/models/logged-user';
 
 @Component({
   selector: 'app-visit',
@@ -13,10 +14,13 @@ export class VisitComponent implements OnInit {
 
   dataSource: Visit[];
   displayedColumns: string[] = ['date', 'category', 'specialist', 'note', 'patient', 'actions'];
+  loggedUser: LoggedUser;
 
   visit = new Visit();
 
-  constructor(private visitService: VisitService, private dialog: MatDialog) { }
+  constructor(private visitService: VisitService, private dialog: MatDialog) {
+    this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  }
 
   ngOnInit() {
     this.visitService.getVisits().subscribe(data => {
@@ -38,12 +42,15 @@ export class VisitComponent implements OnInit {
     const specialist = currentVisit.specialist;
     console.log('uwagi ' + currentVisit.note);
     const note = currentVisit.note;
+    console.log('pacjent ' + currentVisit.patient);
+    const patient = currentVisit.patient;
 
     this.visitService.getVisitById(currentVisit.id).subscribe(data => {
       this.visit.date = currentVisit.date;
       this.visit.category = currentVisit.category;
       this.visit.specialist = currentVisit.specialist;
       this.visit.note = currentVisit.note;
+      this.visit.patient = currentVisit.patient;
     }
     );
   }

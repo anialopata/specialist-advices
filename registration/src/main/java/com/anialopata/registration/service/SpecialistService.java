@@ -1,5 +1,6 @@
 package com.anialopata.registration.service;
 
+import com.anialopata.registration.dto.PatientDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.VisitDto;
 
@@ -59,7 +60,7 @@ public interface SpecialistService  {
      * @param visitDto - visit which will be added to specialist's visits
      * @return ID number of added visit
      */
-    long addVisitToSpecialist(Long specialistId, VisitDto visitDto);
+    long addVisitToSpecialist(Long specialistId, VisitDto visitDto, Long patientId);
 
     void addSpecialistToCategory(long categoryId, SpecialistDto specialistDto);
 }
