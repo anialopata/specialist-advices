@@ -92,7 +92,7 @@ public class PatientControllerTest extends AbstractRestControllerTest {
         returnDto.setLastName(patientDto1.getLastName());
         returnDto.setPatientUrl("/api/v1/patients/1");
 
-        when(patientService.savePatientByDto(anyLong(), any(PatientDto.class))).thenReturn(returnDto);
+        when(patientService.updatePatient(anyLong(), any(PatientDto.class))).thenReturn(returnDto);
 
         mockMvc.perform(put("api/v1/patients/1")
                 .contentType(MediaType.APPLICATION_JSON)

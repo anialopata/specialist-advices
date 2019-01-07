@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Set;
 
 /**
@@ -49,7 +48,7 @@ public class PatientController implements ApiPatientController {
     @PutMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public PatientDto updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto){
-        return patientService.savePatientByDto(id, patientDto);
+        return patientService.updatePatient(id, patientDto);
     }
 
     @DeleteMapping({"/{id}"})

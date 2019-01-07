@@ -26,6 +26,4 @@ public class PatientDto extends UserDto {
 
     @JsonProperty("patient_url")
     private String patientUrl;
-
-    private List<UserRole> roles;
 }

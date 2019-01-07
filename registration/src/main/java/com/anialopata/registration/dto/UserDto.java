@@ -4,6 +4,7 @@ import com.anialopata.registration.model.Gender;
 import com.anialopata.registration.model.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.GeneratedValue;
@@ -44,6 +45,7 @@ public class UserDto {
 
     private String username;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
 

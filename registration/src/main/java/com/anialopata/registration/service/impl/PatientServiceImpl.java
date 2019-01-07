@@ -83,22 +83,17 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDto savePatientByDto(Long id, PatientDto patientDto) {
-        Patient savedPatient= patientMapper.patientDTOToPatient(patientDto);
-        savedPatient.setId(id);
-        savedPatient.setActive(true);
-        savedPatient.setRoles(patientDto.getRoles());
-        return saveAndReturnDto(savedPatient);
-    }
-
-    private PatientDto saveAndReturnDto(Patient patient) {
-
-        Patient saved = userRepository.save(patient);
-        PatientDto returnedDto = patientMapper.patientToPatientDTO(patient);
-        returnedDto.setPatientUrl("/api/v1/patients/" + saved.getId());
-        returnedDto.setActive(true);
-        returnedDto.setRoles(saved.getRoles());
-        return returnedDto;
+    public PatientDto updatePatient(Long id, PatientDto patientDto) {
+        Patient patient = patientRepository.getOne(id);
+        patient.setEmail(patientDto.getEmail());
+        patient.setFirstName(patientDto.getFirstName());
+        patient.setLastName(patientDto.getLastName());
+        patient.setPesel(patientDto.getLastName());
+        patient.setGender(patientDto.getGender());
+        patient.setPhoneNumber(patientDto.getPhoneNumber());
+        patient.setUsername(patientDto.getUsername());
+        patientRepository.save(patient);
+        return patientMapper.patientToPatientDTO(patient);
     }
 
 

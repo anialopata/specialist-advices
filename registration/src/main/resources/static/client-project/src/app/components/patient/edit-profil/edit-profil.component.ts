@@ -38,7 +38,6 @@ export class EditProfilComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['',  [Validators.required, Validators.pattern(this.usernamePattern)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
       email: ['',  [Validators.required, Validators.pattern(this.emailPattern)]],
       phoneNumber: ['',  [Validators.required, Validators.pattern(this.mobnumPattern)]],
       pesel: ['',  [Validators.required, Validators.pattern(this.peselPattern)]]

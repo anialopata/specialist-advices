@@ -1,11 +1,9 @@
 package com.anialopata.registration.service;
 
 import com.anialopata.registration.dto.PatientDto;
-import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.mapper.PatientMapper;
 import com.anialopata.registration.mapper.VisitMapper;
 import com.anialopata.registration.model.Patient;
-import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.repository.PatientRepository;
 import com.anialopata.registration.repository.VisitRepository;
 import com.anialopata.registration.service.impl.PatientServiceImpl;
@@ -100,7 +98,7 @@ public class PatientServiceTest {
 
         when(patientRepository.save(any(Patient.class))).thenReturn(saved);
 
-        PatientDto savedDto = patientService.savePatientByDto(1L, patientDto);
+        PatientDto savedDto = patientService.updatePatient(1L, patientDto);
 
         assertEquals(patientDto.getFirstName(), savedDto.getFirstName());
     }

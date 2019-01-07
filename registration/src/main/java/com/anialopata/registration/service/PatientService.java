@@ -35,7 +35,7 @@ public interface PatientService {
      * @param patientDto - PatientDto which will be converted into Patient type instance
      * @return PatientDto instance
      */
-    PatientDto savePatientByDto(Long id, PatientDto patientDto);
+    PatientDto updatePatient(Long id, PatientDto patientDto);
 
     /**
      *
