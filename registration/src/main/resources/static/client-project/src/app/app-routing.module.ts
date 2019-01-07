@@ -21,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserVisitsDialogComponent } from './components/visit/user-visits-dialog/user-visits-dialog.component';
 import { AllSpecialistsComponent } from './components/specialist/all-specialists/all-specialists.component';
 import { DeletePatientComponent } from './components/patient/dialogs/delete-patient/delete-patient.component';
+import { EditProfilComponent } from './components/patient/edit-profil/edit-profil.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,8 @@ const routes: Routes = [
   { path: 'specialists/all', component: DeleteSpecialistComponent},
   { path: 'patients', component: PatientComponent},
   { path: 'patients', component: DeletePatientComponent},
+
+   { path: 'edit', component: EditProfilComponent}
 
 ];
 @NgModule({

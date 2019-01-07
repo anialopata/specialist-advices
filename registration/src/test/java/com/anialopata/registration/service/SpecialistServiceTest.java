@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,11 +42,12 @@ public class SpecialistServiceTest {
     CategoryMapper categoryMapper;
     CategoryRepository categoryRepository;
     PatientRepository patientRepository;
+    PasswordEncoder passwordEncoder;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        specialistService = new SpecialistServiceImpl(specialistRepository, specialistMapper, visitMapper, visitRepository, categoryMapper, categoryRepository, patientRepository){
+        specialistService = new SpecialistServiceImpl(specialistRepository, specialistMapper, visitMapper, visitRepository, categoryMapper, categoryRepository, patientRepository, passwordEncoder){
         };
     }
 

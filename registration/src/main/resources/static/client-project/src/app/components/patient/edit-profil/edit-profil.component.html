@@ -1,0 +1,106 @@
+<h2 style="margin-top: 80px; margin-bottom: 40px;">EDYTUJ PROFIL</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSaveClick()">
+
+    <div class="form-group">
+        <label for="firstName">Imię</label>
+        <input type="text" formControlName="firstName" [(ngModel)]='user.firstName' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Pole wymagane</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Nazwisko</label>
+        <input type="text" formControlName="lastName" [(ngModel)]='user.lastName' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Pole wymagane</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" formControlName="email" [(ngModel)]='user.email' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Pole wymagane</div>
+            <div *ngIf="f.email.errors.pattern">Nieprawidłowy adres e-mail</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneNumber">Telefon kontaktowy</label>
+        <input type="text" formControlName="phoneNumber" [(ngModel)]='user.phoneNumber' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.phoneNumber.errors.required">Pole wymagane</div>
+            <div *ngIf="f.phoneNumber.errors.pattern">Nieprawidłowy numer</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pesel">Pesel</label>
+        <input type="text" formControlName="pesel" [(ngModel)]='user.pesel'  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pesel.errors }" />
+        <div *ngIf="submitted && f.pesel.errors" class="invalid-feedback">
+            <div *ngIf="f.pesel.errors.required">Pole wymagane</div>
+            <div *ngIf="f.pesel.errors.pattern">Nieprawidłowy pesel</div>
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label for="username">Nazwa użytkownika</label>
+            <input type="text" formControlName="username" [(ngModel)]='user.username' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Pole wymagane</div>
+                <div *ngIf="f.username.errors.pattern">Niepoprawna nazwa użytkownika</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Hasło</label>
+            <input type="password" formControlName="password" [(ngModel)]='user.password' class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Pole wymagane</div>
+                <div *ngIf="f.password.errors.minlength">Hasło musi zawierać min. 6 znaków</div>
+            </div>
+        </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+        <button [disabled]="loading" class="btn btn-primary">Potwierdź</button>
+        <a [routerLink]="['/dashboard']" class="btn btn-link">Anuluj</a>
+    </div>
+</form>
+<!-- <h2 mat-dialog-title>Modyfikuj dane</h2>
+<mat-dialog-content>
+  <form name="registerForm" ng-controller="EditProfilComponent">
+  <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+   <input matInput [(ngModel)]='user.username' name='nazwa' placeholder="Nowa nazwa" required>
+  
+ </mat-form-field>
+ <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+    <input matInput [(ngModel)]='user.email' name='opis' placeholder="Nowy mail" required>
+
+  </mat-form-field>
+  <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+      <input matInput [(ngModel)]='user.firstName' name='imie' placeholder="Nowe imie" required>
+
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+        <input matInput [(ngModel)]='user.lastName' name='nazwisko' placeholder="Nowe nazwisko" required>
+    
+      </mat-form-field>
+      <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+          <input matInput [(ngModel)]='user.pesel' name='pesel' placeholder="Nowy pesel" required>
+  
+        </mat-form-field>
+        <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+            <input matInput [(ngModel)]='user.password' name='haslo' placeholder="Nowe haslo" required>
+
+          </mat-form-field>
+          <mat-form-field [hideRequiredMarker]="false" [floatLabel]="Auto">
+              <input matInput [(ngModel)]='user.phoneNumber' name='numer' placeholder="Nowy numer" required>
+       
+            </mat-form-field>
+ </form>
+ </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)='onCancelClick()'>Anuluj</button>
+    <button mat-button (click)='onSaveClick()'>Zapisz</button>
+</mat-dialog-actions>
+   -->

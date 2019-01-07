@@ -12,6 +12,7 @@ import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.model.Visit;
 import com.anialopata.registration.repository.*;
 import com.anialopata.registration.service.SpecialistService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -35,8 +36,9 @@ public class SpecialistServiceImpl implements SpecialistService {
     private final CategoryMapper categoryMapper;
     private final CategoryRepository categoryRepository;
     private final PatientRepository patientRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public SpecialistServiceImpl(SpecialistRepository specialistRepository, SpecialistMapper specialistMapper, VisitMapper visitMapper, VisitRepository visitRepository, CategoryMapper categoryMapper, CategoryRepository categoryRepository, PatientRepository patientRepository) {
+    public SpecialistServiceImpl(SpecialistRepository specialistRepository, SpecialistMapper specialistMapper, VisitMapper visitMapper, VisitRepository visitRepository, CategoryMapper categoryMapper, CategoryRepository categoryRepository, PatientRepository patientRepository, PasswordEncoder passwordEncoder) {
         this.specialistRepository = specialistRepository;
         this.specialistMapper = specialistMapper;
         this.visitMapper = visitMapper;
@@ -44,6 +46,7 @@ public class SpecialistServiceImpl implements SpecialistService {
         this.categoryMapper = categoryMapper;
         this.categoryRepository = categoryRepository;
         this.patientRepository = patientRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -96,6 +99,7 @@ public class SpecialistServiceImpl implements SpecialistService {
         Specialist savedSpecialist = specialistMapper.specialistDtoToSpecialist(specialistDto);
         savedSpecialist.setId(id);
         savedSpecialist.setActive(true);
+        savedSpecialist.setPassword(passwordEncoder.encode(savedSpecialist.getPassword()));
         return saveAndReturnDto(savedSpecialist);
     }
 
@@ -105,6 +109,7 @@ public class SpecialistServiceImpl implements SpecialistService {
         SpecialistDto returnedDto = specialistMapper.specialistToSpecialistDto(specialist);
         returnedDto.setSpecialistUrl("/api/v1/specialists/" + saved.getId());
         returnedDto.setActive(true);
+        returnedDto.setPassword(passwordEncoder.encode(saved.getPassword()));
         return returnedDto;
 }
 

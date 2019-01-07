@@ -34,7 +34,7 @@ public class PatientController implements ApiPatientController {
     @ResponseStatus(HttpStatus.OK)
     public PatientListDto getAllPatients() { return new PatientListDto(patientService.getAllPatients());}
 
-    @ApiOperation(value = "Get all activr patients", response = PatientListDto.class, responseContainer = "List")
+    @ApiOperation(value = "Get all active patients", response = PatientListDto.class, responseContainer = "List")
     @GetMapping
     @RequestMapping("/active")
     @ResponseStatus(HttpStatus.OK)
@@ -42,7 +42,7 @@ public class PatientController implements ApiPatientController {
 
     @GetMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
-    public PatientDto getPatientById(@PathVariable @RequestParam(value = "patientId") Long id){
+    public PatientDto getPatientById(@PathVariable Long id){
         return patientService.getPatientById(id);
     }
 

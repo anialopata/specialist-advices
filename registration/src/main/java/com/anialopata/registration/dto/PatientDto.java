@@ -1,10 +1,12 @@
 package com.anialopata.registration.dto;
 
+import com.anialopata.registration.model.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -24,4 +26,6 @@ public class PatientDto extends UserDto {
 
     @JsonProperty("patient_url")
     private String patientUrl;
+
+    private List<UserRole> roles;
 }

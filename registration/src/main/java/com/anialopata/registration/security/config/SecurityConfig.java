@@ -78,17 +78,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        return new InMemoryTokenStore();
 //    }
 
-    @Bean
-    public MyJwtCustomTokenConverter myJwtCustomTokenConverter() {
-        return new MyJwtCustomTokenConverter();
-    }
+@Bean
+public MyJwtCustomTokenConverter myJwtCustomTokenConverter() {
+    return new MyJwtCustomTokenConverter();
+}
 
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(myJwtCustomTokenConverter());
     }
-
-
 
     @Bean
     @Autowired

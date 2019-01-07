@@ -33,15 +33,13 @@ export class LoginComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    // this.loginForm = this.formBuilder.group({
+    //   username: ['', Validators.required],
+    //   password: ['', Validators.required]
+    // });
 
     // reset login status
     this.authService.logout();
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   get f() { return this.loginForm.controls; }
@@ -53,6 +51,12 @@ export class LoginComponent implements OnInit {
       loggedUser.email = data.email;
       loggedUser.token = data.access_token;
       loggedUser.id = data.userId;
+      loggedUser.phoneNumber = data.phoneNumber;
+      loggedUser.firstName = data.firstName;
+      loggedUser.lastName = data.lastName;
+      loggedUser.pesel = data.pesel;
+      loggedUser.password = data.password;
+
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
       this.loggedIn.next(true);

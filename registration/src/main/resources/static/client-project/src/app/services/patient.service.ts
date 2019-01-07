@@ -35,8 +35,8 @@ export class PatientService {
     return this.http.post('http://localhost:8080/signup/patient', patient);
   }
 
-  public updatePatient(patient: LoggedUser) {
-    return this.http.put<LoggedUser>('//localhost:8080/api/patients/' + patient.id, patient);
+  public updatePatient(patient: Patient) {
+    return this.http.put<Patient>('//localhost:8080/api/v1/patients/' + patient.id, patient);
   }
 
     getToken() {

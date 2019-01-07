@@ -18,22 +18,26 @@ public class MyUserDetails implements UserDetails {
 
     private long id;
     private User user;
-    private String firstName;
-    private String lastName;
+//    private String firstName;
+//    private String lastName;
     private String email;
     private static final long serialVersionUID = 1L;
     private Collection<? extends GrantedAuthority> authorities;
     private String password;
     private String username;
+//    private String phoneNumber;
+//    private String pesel;
 
     public MyUserDetails(User user) {
         this.user = user;
         this.id = user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
+//        this.firstName = user.getFirstName();
+//        this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.username = user.getUsername();
         this.password = user.getPassword();
+//        this.phoneNumber = user.getPhoneNumber();
+//        this.pesel = user.getPesel();
         this.authorities = translate(user.getRoles());
     }
 
@@ -68,17 +72,25 @@ public class MyUserDetails implements UserDetails {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public String getPesel() {
+//        return pesel;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
 
     public String getEmail() {
         return email;
     }
+
+//    public String getPhoneNumber() {
+//        return phoneNumber;
+//    }
 
     @Override
     public boolean isAccountNonExpired() {
