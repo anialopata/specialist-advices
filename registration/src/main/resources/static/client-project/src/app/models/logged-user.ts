@@ -8,4 +8,5 @@ export class LoggedUser {
     password: string;
     token: string;
     pesel: string;
+    roles: string[];
 }

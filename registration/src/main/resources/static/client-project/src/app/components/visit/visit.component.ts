@@ -4,6 +4,7 @@ import { Visit } from 'src/app/models/visit.model';
 import { DeleteVisitDialogComponent } from './delete-visit-dialog/delete-visit-dialog.component';
 import { MatDialog } from '@angular/material';
 import { LoggedUser } from 'src/app/models/logged-user';
+import { Person } from 'src/app/models/person.model';
 
 @Component({
   selector: 'app-visit',
@@ -14,7 +15,7 @@ export class VisitComponent implements OnInit {
 
   dataSource: Visit[];
   displayedColumns: string[] = ['date', 'category', 'specialist', 'note', 'patient', 'actions'];
-  loggedUser: LoggedUser;
+  loggedUser: Person;
 
   visit = new Visit();
 

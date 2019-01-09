@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { SpecialistFormComponent } from './specialist-form/specialist-form.component';
 import { DeleteSpecialistComponent } from './dialogs/delete-specialist/delete-specialist.component';
 import { ChangeSpecialistDataComponent } from './dialogs/change-specialist-data/change-specialist-data.component';
+import { Person } from 'src/app/models/person.model';
 
 @Component({
   selector: 'app-specialist',
@@ -19,10 +20,13 @@ export class SpecialistComponent implements OnInit {
 
   dataSource: Specialist[];
   displayedColumns = ['firstName'];
+  loggedUser: Person;
 
   specialist = new Specialist();
 
-  constructor(private specialistService: SpecialistService, private dialog: MatDialog) { }
+  constructor(private specialistService: SpecialistService, private dialog: MatDialog) { 
+    this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+  }
 
   ngOnInit() {
     this.specialistService.getSpecialists().subscribe(data => {

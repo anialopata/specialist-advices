@@ -39,6 +39,7 @@ export class PatientService {
     return this.http.put<Patient>('//localhost:8080/api/v1/patients/' + patient.id, patient);
   }
 
+
     getToken() {
     return localStorage.getItem('token');
   }

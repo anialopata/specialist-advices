@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { LoggedUser } from '../models/logged-user';
+import { PatientService } from './patient.service';
+import { Patient } from '../models/patient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +12,15 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private user: Patient;
+  userRole: String;
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private patientService: PatientService) {
+   }
 
   login(username, password) {
     const data = 'username=' + username + '&password=' + password + '&grant_type=password' +
@@ -34,7 +40,11 @@ export class AuthService {
     localStorage.removeItem('loggedUser');
   }
 
-  public getToken(): string {
-    return localStorage.getItem('userToken');
+  getRole() {
+    const roles = localStorage.getItem('loggedUser');
+   }
+
+   getToken() {
+    return localStorage.getItem('token');
   }
 }

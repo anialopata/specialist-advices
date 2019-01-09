@@ -53,9 +53,8 @@
       <th mat-header-cell *matHeaderCellDef>Akcje</th>
       <td mat-cell *matCellDef="let element">
         <!-- <mat-icon>date_range</mat-icon> -->
-        <mat-icon (click)="deletePatientDialog(element.id)">delete</mat-icon> 
+        <mat-icon (click)="deletePatientDialog(element.id)" *ngIf="currentUser.roles[0].authority === 'ROLE_ADMIN'">delete</mat-icon> 
       </td>
-      <!-- po kliknieciu w kalendarzyk, przenosi nas do wizyt danego pacjenta -->
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

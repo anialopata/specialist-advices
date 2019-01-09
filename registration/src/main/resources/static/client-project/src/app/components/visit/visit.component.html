@@ -13,9 +13,8 @@
               <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
             </ng-container>
         
-            <!-- SPECJALISTA ( w widoku pacjenta i admina )-->
             <ng-container matColumnDef="specialist">
-              <th mat-header-cell *matHeaderCellDef> Specjalista </th>
+              <th mat-header-cell *matHeaderCellDef > Specjalista </th>
               <td mat-cell *matCellDef="let element"> {{element.specialist.degree}} {{element.specialist.firstName}} {{element.specialist.lastName}}</td>
             </ng-container>
         

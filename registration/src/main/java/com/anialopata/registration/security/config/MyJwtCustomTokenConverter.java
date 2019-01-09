@@ -24,6 +24,7 @@ public class MyJwtCustomTokenConverter extends JwtAccessTokenConverter {
         additionalInfo.put("userId", user.getId());
         additionalInfo.put("username", user.getUsername());
         additionalInfo.put("email", user.getEmail());
+        additionalInfo.put("roles", user.getAuthorities());
 
 
         ((DefaultOAuth2AccessToken) accessToken)

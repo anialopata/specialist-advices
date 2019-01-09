@@ -15,8 +15,8 @@
                   <p>{{element.description}} </p>    
                   <p>Porada {{element.category?.name}} </p>                                          
                   <!--przenosi do formularza "specjalista (wczytany), kategoria do wyboru --> 
-                  <button mat-raised-button (click)="changeSpecialistData(element)">Modyfikuj dane</button>
-                  <button mat-raised-button (click)="deleteSpecialistDialog(element.id)">Usuń specjalistę</button>     
+                  <button mat-raised-button *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" (click)="changeSpecialistData(element)">Modyfikuj dane</button>
+                  <button mat-raised-button *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" (click)="deleteSpecialistDialog(element.id)">Usuń specjalistę</button>     
                 </mat-expansion-panel>        
             </mat-cell>
             </ng-container>

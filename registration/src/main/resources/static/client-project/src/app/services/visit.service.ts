@@ -39,8 +39,8 @@ export class VisitService {
     return this.http.get<Visit>('http://localhost:8080/api/v1/visits/' + id);
   }
 
-  public getSpecialistWeek(specialistId: number, date: Date, weekNo: number = 0) {
-    return this.http.get<Week>(`http://localhost:8080/api/v1/weeks/${specialistId}/${date.toISOString().slice(0, 10)}/0`);
+  public getSpecialistWeek(specialistId: number, date: Date, weekNo: number) {
+    return this.http.get<Week>(`http://localhost:8080/api/v1/weeks/${specialistId}/${date.toISOString().slice(0, 10)}/${weekNo}`);
   }
 
   public getPatientVisits(patientId: number): Observable<Visit[]> {

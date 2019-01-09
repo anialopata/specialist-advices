@@ -4,14 +4,10 @@ import com.anialopata.registration.api.ApiCategoryController;
 import com.anialopata.registration.dto.CategoryDto;
 import com.anialopata.registration.dto.CategoryListDto;
 import com.anialopata.registration.dto.SpecialistDto;
-import com.anialopata.registration.security.domain.MyUserDetails;
 import com.anialopata.registration.service.CategoryService;
 import com.anialopata.registration.service.SpecialistService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -37,11 +33,6 @@ public class CategoryController implements ApiCategoryController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CategoryListDto getAllCategories() {
-
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        UserDetails myUserDetails = (MyUserDetails)authentication.getPrincipal();
-//        long id = myUserDetails.getId();
-//        System.out.println("logged in user name:: " + id);
         return new CategoryListDto(categoryService.getAllCategories());
     }
 

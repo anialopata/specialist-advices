@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       loggedUser.lastName = data.lastName;
       loggedUser.pesel = data.pesel;
       loggedUser.password = data.password;
+      loggedUser.roles = data.roles;
 
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
 
@@ -66,4 +67,5 @@ export class LoginComponent implements OnInit {
         this.isLoginError = true;
       });
   }
+
 }

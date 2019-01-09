@@ -23,7 +23,7 @@
     </mat-form-field>
     <div>
       <button mat-button matStepperPrevious>Wstecz</button>
-      <button mat-button matStepperNext (click)='getWeek()'>Dalej</button>
+      <button mat-button matStepperNext (click)="getWeek()">Dalej</button>
     </div>
   </mat-step>
   <mat-step>
@@ -45,6 +45,29 @@
     <div>
       <button mat-button matStepperPrevious>Wstecz</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="getWeekPlusOne()">Dalej</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Wybierz termin</ng-template>
+
+      <!-- </div> -->
+
+    <td *ngFor="let key of weekKeys" class="inline-div">
+      <!-- <div>{{ key }}: </div>   -->
+     
+      <div class="date" *ngFor="let value of week[key]">
+           {{value.date | date: 'dd.MM'}}:
+          
+        <button mat-raised-button (click)="getVisitData(value)">
+          {{ value.date | date: 'HH:mm' }}
+        </button>
+      </div>      
+    </td>
+    <div>
+      <button mat-button matStepperPrevious>Wstecz</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="getWeekPlusOne()">Dalej</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

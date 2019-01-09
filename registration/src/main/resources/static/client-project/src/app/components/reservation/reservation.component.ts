@@ -31,6 +31,7 @@ export class ReservationComponent implements OnInit {
   selectedVisit = new Visit();
   weekKeys: string[];
   visit: Visit[];
+  addWeek: number;
 
   constructor(private _formBuilder: FormBuilder, private categoryService: CategoryService, private specialistService: SpecialistService,
     private visitService: VisitService, private dialog: MatDialog) {}
@@ -50,12 +51,23 @@ createReservation(date: Date) {
 }
 
 getWeek() {
-  this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 1).subscribe(data => {
-    this.getFreeHours(data, new Date());
+  this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), this.addWeek).subscribe(data => {
+    const additionalWeek = 7;
+    const start = new Date();
+    // this.getFreeHours(data, new Date() + (additionalWeek * addWeek));
     this.weekKeys = Object.keys(this.week);
     console.log(data);
   });
 }
+
+// getWeekPlusOne() {
+//   this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 1).subscribe(data => {
+//     this.getFreeHours(data, new Date());
+//     this.weekKeys = Object.keys(data);
+//     console.log(data);
+//   });
+// }
+
 // parsowNIE DATY z serwera new Date(date_string)
 
   private getCategories() {

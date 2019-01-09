@@ -17,6 +17,7 @@ export class SpecialistFormComponent implements OnInit {
 
   specialist: Specialist = new Specialist();
   categories: Category[];
+  selectedCategory: Category = new Category();
 
   registerForm: FormGroup;
   loading = false;
@@ -34,7 +35,7 @@ export class SpecialistFormComponent implements OnInit {
       private specialistService: SpecialistService) { }
 
   ngOnInit() {
-    this.getCategories();
+     this.getCategories();
       this.registerForm = this.formBuilder.group({
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
@@ -44,7 +45,7 @@ export class SpecialistFormComponent implements OnInit {
           phoneNumber: ['',  [Validators.required, Validators.pattern(this.mobnumPattern)]],
           pesel: ['',  [Validators.required, Validators.pattern(this.peselPattern)]],
           degree: ['', Validators.required],
-          category: Category
+          selectedCategory: ['', Validators.required]
       });
   }
 

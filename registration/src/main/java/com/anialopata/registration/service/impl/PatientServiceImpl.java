@@ -1,7 +1,6 @@
 package com.anialopata.registration.service.impl;
 
 import com.anialopata.registration.dto.PatientDto;
-import com.anialopata.registration.dto.SimpleVisitDto;
 import com.anialopata.registration.dto.VisitDto;
 import com.anialopata.registration.exception.UserNotFoundException;
 import com.anialopata.registration.mapper.PatientMapper;
@@ -17,8 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -88,7 +85,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setEmail(patientDto.getEmail());
         patient.setFirstName(patientDto.getFirstName());
         patient.setLastName(patientDto.getLastName());
-        patient.setPesel(patientDto.getLastName());
+        patient.setPesel(patientDto.getPesel());
         patient.setGender(patientDto.getGender());
         patient.setPhoneNumber(patientDto.getPhoneNumber());
         patient.setUsername(patientDto.getUsername());

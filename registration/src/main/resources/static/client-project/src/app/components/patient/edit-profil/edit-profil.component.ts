@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { get } from 'http';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-profil',
@@ -27,6 +27,7 @@ export class EditProfilComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder,
         private router: Router, private patientService: PatientService, private dialogRef: MatDialogRef<EditProfilComponent>,
+        private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.user = data;
       this.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
@@ -68,6 +69,7 @@ export class EditProfilComponent implements OnInit {
               this.router.navigate(['/login']);
           },
           error => {
+              this.authService.logout();
               this.loading = false;
           });
 }

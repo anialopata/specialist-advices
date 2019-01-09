@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { SpecialistService } from 'src/app/services/specialist.service';
 import { ChangeDataDialogComponent } from './dialogs/change-data-dialog/change-data-dialog.component';
 import { DeleteCategoryComponent } from './dialogs/delete-category/delete-category.component';
+import { Person } from 'src/app/models/person.model';
 
 @Component({
   selector: 'app-category',
@@ -15,10 +16,13 @@ export class CategoryComponent implements OnInit {
 
   dataSource: Category[];
   displayedColumns = ['name'];
+  currentUser: Person;
 
   category = new Category();
 
-  constructor(private categoryService: CategoryService, private dialog: MatDialog, private specialistService: SpecialistService) { }
+  constructor(private categoryService: CategoryService, private dialog: MatDialog, private specialistService: SpecialistService) { 
+    this.currentUser = JSON.parse(localStorage.getItem('loggedUser'));
+  }
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe(data => {
