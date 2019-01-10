@@ -16,7 +16,7 @@ export class CategoryFormComponent implements OnInit {
   constructor(private specialistService: SpecialistService, private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.specialistService.getSpecialists().subscribe(data => {
+    this.specialistService.getActiveSpecialists().subscribe(data => {
       this.specialists = data;
       console.log(data);
     });

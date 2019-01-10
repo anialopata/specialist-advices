@@ -20,11 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Ania on 2018-12-14.
@@ -93,23 +90,6 @@ public class SpecialistServiceTest {
 
         assertEquals(1, specialistDtoList.size());
 
-    }
-
-    @Test
-    public void saveSpecialistByDtoTest() throws Exception {
-
-        SpecialistDto specialistDto = new SpecialistDto();
-        specialistDto.setFirstName("Ania");
-
-        Specialist saved = new Specialist();
-        saved.setFirstName(specialistDto.getFirstName());
-        saved.setId(1L);
-
-        when(specialistRepository.save(any(Specialist.class))).thenReturn(saved);
-
-        SpecialistDto savedDto = specialistService.saveSpecialistByDto(1L, specialistDto);
-
-        assertEquals(specialistDto.getFirstName(), savedDto.getFirstName());
     }
 
 

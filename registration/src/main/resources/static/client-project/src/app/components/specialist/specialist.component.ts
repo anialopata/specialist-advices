@@ -29,7 +29,7 @@ export class SpecialistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.specialistService.getSpecialists().subscribe(data => {
+    this.specialistService.getActiveSpecialists().subscribe(data => {
       this.dataSource = data;
       console.log(data);
     });

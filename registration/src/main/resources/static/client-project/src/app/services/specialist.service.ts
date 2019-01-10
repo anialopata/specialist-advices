@@ -21,8 +21,16 @@ export class SpecialistService {
 
   constructor(private http: HttpClient) {}
 
-  public getSpecialists(): Observable<Specialist[]> {
+  public getAllSpecialists(): Observable<Specialist[]> {
     return this.http.get<any>('http://localhost:8080/api/v1/specialists')
+          .pipe(
+            map(specialistList => {
+              return specialistList.specialists;
+            }));
+  }
+
+  public getActiveSpecialists(): Observable<Specialist[]> {
+    return this.http.get<any>('http://localhost:8080/api/v1/specialists/active')
           .pipe(
             map(specialistList => {
               return specialistList.specialists;

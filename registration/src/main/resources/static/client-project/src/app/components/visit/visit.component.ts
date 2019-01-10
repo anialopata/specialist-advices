@@ -14,7 +14,7 @@ import { Person } from 'src/app/models/person.model';
 export class VisitComponent implements OnInit {
 
   dataSource: Visit[];
-  displayedColumns: string[] = ['date', 'category', 'specialist', 'note', 'patient', 'actions'];
+  displayedColumns: string[] = ['date', 'category', 'specialist', 'note', 'patient'];
   loggedUser: Person;
 
   visit = new Visit();

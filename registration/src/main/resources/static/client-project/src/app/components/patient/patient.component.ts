@@ -7,6 +7,7 @@ import { VisitService } from 'src/app/services/visit.service';
 import { UserVisitsDialogComponent } from '../visit/user-visits-dialog/user-visits-dialog.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { DeletePatientComponent } from './dialogs/delete-patient/delete-patient.component';
+import { Person } from 'src/app/models/person.model';
 
 @Component({
   selector: 'app-patient',
@@ -14,13 +15,15 @@ import { DeletePatientComponent } from './dialogs/delete-patient/delete-patient.
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
-
+  currentUser: Person;
   dataSource: Patient[];
   displayedColumns: string[] = ['firstName', 'lastName', 'pesel', 'email', 'gender', 'phoneNumber', 'actions', 'username', 'isActive'];
 
   patient = new Patient();
 
-  constructor(private patientService: PatientService, private visitService: VisitService, private dialog: MatDialog) { }
+  constructor(private patientService: PatientService, private visitService: VisitService, private dialog: MatDialog) { 
+    this.currentUser = JSON.parse(localStorage.getItem('loggedUser'));
+  }
 
   ngOnInit() {
     this.patientService.getPatients().subscribe(data => {
@@ -52,8 +55,8 @@ export class PatientComponent implements OnInit {
 
   }
 
-
 }
+
 
 
 

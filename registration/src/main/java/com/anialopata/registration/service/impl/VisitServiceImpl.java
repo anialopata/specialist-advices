@@ -1,13 +1,8 @@
 package com.anialopata.registration.service.impl;
 
 import com.anialopata.registration.dto.SimpleVisitDto;
-import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.VisitDto;
-import com.anialopata.registration.exception.DateIsBeforeNowException;
-import com.anialopata.registration.exception.UserNotFoundException;
 import com.anialopata.registration.mapper.VisitMapper;
-import com.anialopata.registration.model.Patient;
-import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.model.Visit;
 import com.anialopata.registration.repository.PatientRepository;
 import com.anialopata.registration.repository.VisitRepository;
@@ -20,7 +15,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -95,11 +89,9 @@ public class VisitServiceImpl implements VisitService {
     public void deleteVisit(Long id) {
 //        Optional<Visit> visit = visitRepository.findById(id);
 //        if (!visit.isPresent()) throw new UserNotFoundException("Visit doesn't exist");
-        VisitDto visitDto = getVisitById(id);
-        visitDto.setActive(false);
-        Visit visit = visitMapper.visitDtoToVisit(visitDto);
-        Visit saved = visitRepository.save(visit);
+            visitRepository.deleteById(id);
     }
+
 
     private VisitDto saveAndReturnDto(Visit visit) {
 //        if(visit.getDate().isBefore(LocalDateTime.now()))

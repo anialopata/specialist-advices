@@ -19,7 +19,7 @@ export class AllSpecialistsComponent implements OnInit {
   constructor(private specialistService: SpecialistService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.specialistService.getSpecialists().subscribe(data => {
+    this.specialistService.getAllSpecialists().subscribe(data => {
       this.dataSource = data;
       console.log(data);
     });

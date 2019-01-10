@@ -47,6 +47,8 @@ const routes: Routes = [
 
   { path: 'visits', component: VisitComponent},
   { path: 'myvisits', component: UserVisitsDialogComponent},
+  { path: 'myvisits', component: DeleteVisitDialogComponent},
+
 
   { path: 'specialists/all', component: AllSpecialistsComponent},
   { path: 'specialists/all', component: DeleteSpecialistComponent},

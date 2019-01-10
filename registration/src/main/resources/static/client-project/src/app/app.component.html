@@ -23,11 +23,11 @@
   </section>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/dashboard']">Strona główna</a>
-      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_PATIENT'"[routerLink]="['/myvisits']">Moje wizyty</a>
-      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_PATIENT'"(click) = "changeDataDialog(user)">Edytuj profil</a>
-      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'"[routerLink]="['/specialists/all']">Historia specjalistów</a>
-      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'"[routerLink]="['/patients']">Historia pacjentów</a>
-      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'"[routerLink]="['/visits']">Historia wizyt</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN' || loggedUser.roles[0].authority === 'ROLE_PATIENT'" [routerLink]="['/myvisits']">Moje wizyty</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN' || loggedUser.roles[0].authority === 'ROLE_PATIENT'" (click) = "changeDataDialog(user)">Edytuj profil</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/specialists/all']">Historia specjalistów</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/patients']">Historia pacjentów</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/visits']">Historia wizyt</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -48,13 +48,13 @@
       <button mat-button (click)="getWeekPlusOne()">Dalej</button>
     </div>
   </mat-step>
-  <mat-step>
+<!-- <mat-step>
     <ng-template matStepLabel>Wybierz termin</ng-template>
 
-      <!-- </div> -->
+      </div>
 
     <td *ngFor="let key of weekKeys" class="inline-div">
-      <!-- <div>{{ key }}: </div>   -->
+      <div>{{ key }}: </div>  
      
       <div class="date" *ngFor="let value of week[key]">
            {{value.date | date: 'dd.MM'}}:
@@ -69,5 +69,5 @@
       <button mat-button (click)="stepper.reset()">Reset</button>
       <button mat-button (click)="getWeekPlusOne()">Dalej</button>
     </div>
-  </mat-step>
+  </mat-step> --> 
 </mat-horizontal-stepper>

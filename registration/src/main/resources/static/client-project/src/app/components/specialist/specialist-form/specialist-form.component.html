@@ -116,8 +116,8 @@
 
             <div class="form-group" >
                 <label for="selectedCategory">Kategoria</label>
-                <select  name="categories" [(ngModel)]="selectedCategory" formControlName="selectedCategory" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.selectedCategory.errors }"  >
-                  <option [(ngValue)]="selectedCategory" *ngFor="let category of categories">{{category.name}}</option>
+                <select  name="categories" [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}" class="form-control">                    
+                  <option [(ngValue)]="category" *ngFor="let category of categories">{{category.name}}</option>
                 </select>
             </div>
 

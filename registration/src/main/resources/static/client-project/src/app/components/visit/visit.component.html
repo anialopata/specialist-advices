@@ -30,12 +30,7 @@
                 <td mat-cell *matCellDef="let element"> {{element.patient.username}} </td>              
               </ng-container>
     
-            <!-- AKCJE W WIDOKU pacjenta -->
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Akcje</th>
-                <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="deleteVisitDialog(element.id)">Usuń wizytę</button> </td>
-                <!-- po kliknieciu w kalendarzyk, przenosi nas do wizyt danego pacjenta -->
-              </ng-container>
+       
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

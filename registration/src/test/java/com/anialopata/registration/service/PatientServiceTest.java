@@ -15,12 +15,9 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Ania on 2018-11-24.
@@ -86,22 +83,6 @@ public class PatientServiceTest {
 
     }
 
-    @Test
-    public void savePatientByDtoTest() throws Exception {
-
-        PatientDto patientDto = new PatientDto();
-        patientDto.setFirstName("Ania");
-
-        Patient saved = new Patient();
-        saved.setFirstName(patientDto.getFirstName());
-        saved.setId(1L);
-
-        when(patientRepository.save(any(Patient.class))).thenReturn(saved);
-
-        PatientDto savedDto = patientService.updatePatient(1L, patientDto);
-
-        assertEquals(patientDto.getFirstName(), savedDto.getFirstName());
-    }
 
     @Test
     public void deletePatientByIdTest() throws Exception {
