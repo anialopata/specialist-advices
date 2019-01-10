@@ -54,6 +54,7 @@ export class SpecialistComponent implements OnInit {
       this.specialist.lastName = currentSpecialist.firstName;
       this.specialist.degree = currentSpecialist.degree;
       this.specialist.description = currentSpecialist.description;
+      this.specialist.category = currentSpecialist.category;
 
       console.log('firstName: ' + this.specialist.firstName);
       console.log('lastName: ' + this.specialist.lastName);
@@ -69,6 +70,7 @@ export class SpecialistComponent implements OnInit {
     console.log('lastName: ' + this.specialist.lastName);
     console.log('degree: ' + this.specialist.degree);
     console.log('description: ' + this.specialist.description);
+    console.log('category: ' + this.specialist.category);
     const dialogRef = this.dialog.open(ChangeSpecialistDataComponent, { data: currentSpecialist });
     dialogRef.afterClosed().subscribe(result => {
       this.getSpecialistData(currentSpecialist);

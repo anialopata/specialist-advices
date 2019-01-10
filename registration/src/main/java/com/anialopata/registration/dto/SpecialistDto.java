@@ -25,8 +25,6 @@ public class SpecialistDto extends UserDto {
 
     private Category category;
 
-    private boolean isActive = true;
-
     @Lob
     private String description;
 

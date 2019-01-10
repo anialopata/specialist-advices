@@ -39,8 +39,6 @@ public class Specialist extends User {
     @JoinColumn(name="category_id")
     private Category category;
 
-    private boolean isActive = true;
-
     public void addVisit(Visit visit) {
         visit.setSpecialist(this);
         visits.add(visit);

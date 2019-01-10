@@ -3,8 +3,6 @@ package com.anialopata.registration.security.service;
 /**
  * Created by Ania on 2018-11-15.
  */
-import java.util.Collections;
-
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.mapper.SpecialistMapper;
 import com.anialopata.registration.model.Category;
@@ -13,11 +11,11 @@ import com.anialopata.registration.model.User;
 import com.anialopata.registration.model.UserRole;
 import com.anialopata.registration.repository.CategoryRepository;
 import com.anialopata.registration.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 
 @Service
 @javax.transaction.Transactional
@@ -38,7 +36,7 @@ public class SignupService {
         this.specialistMapper = specialistMapper;
     }
 
-    @javax.transaction.Transactional
+    @Transactional
     public void addPatient(User user) {
         user.setRoles(Collections.singletonList(new UserRole("PATIENT")));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -54,5 +52,6 @@ public class SignupService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
-
 }
+
+

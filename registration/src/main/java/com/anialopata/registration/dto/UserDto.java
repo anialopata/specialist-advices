@@ -1,19 +1,13 @@
 package com.anialopata.registration.dto;
 
 import com.anialopata.registration.model.Gender;
-import com.anialopata.registration.model.UserRole;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 /**
  * Created by Ania on 2018-11-02.
@@ -47,6 +41,8 @@ public class UserDto {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    private boolean isActive = true;
 
 
 }

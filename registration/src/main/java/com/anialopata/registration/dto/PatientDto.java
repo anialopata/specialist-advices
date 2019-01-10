@@ -1,12 +1,11 @@
 package com.anialopata.registration.dto;
 
-import com.anialopata.registration.model.UserRole;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -21,8 +20,6 @@ import java.util.Set;
 public class PatientDto extends UserDto {
 
     private Set<VisitDto> visits;
-
-    private boolean isActive = true;
 
     @JsonProperty("patient_url")
     private String patientUrl;

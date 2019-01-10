@@ -17,7 +17,7 @@ import { Person } from 'src/app/models/person.model';
 export class PatientComponent implements OnInit {
   currentUser: Person;
   dataSource: Patient[];
-  displayedColumns: string[] = ['firstName', 'lastName', 'pesel', 'email', 'gender', 'phoneNumber', 'actions', 'username', 'isActive'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'pesel', 'email','phoneNumber', 'actions', 'username', 'isActive'];
 
   patient = new Patient();
 
