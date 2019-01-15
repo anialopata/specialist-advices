@@ -1,7 +1,6 @@
 package com.anialopata.registration.api.impl;
 
 import com.anialopata.registration.api.ApiSpecialistController;
-import com.anialopata.registration.dto.PatientDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.SpecialistListDto;
 import com.anialopata.registration.dto.VisitDto;
@@ -56,7 +55,7 @@ public class SpecialistController implements ApiSpecialistController {
     @PutMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public SpecialistDto updateSpecialist(@PathVariable Long id, @RequestBody SpecialistDto specialistDto){
-        return specialistService.saveSpecialistByDto(id, specialistDto);
+        return specialistService.updateSpecialist(id, specialistDto);
     }
 
     @DeleteMapping({"/{id}"})

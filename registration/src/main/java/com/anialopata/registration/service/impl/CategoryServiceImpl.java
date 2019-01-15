@@ -9,13 +9,10 @@ import com.anialopata.registration.model.Category;
 import com.anialopata.registration.repository.CategoryRepository;
 import com.anialopata.registration.repository.SpecialistRepository;
 import com.anialopata.registration.service.CategoryService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -95,9 +92,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteCategory(Long id) {
-        Optional<Category> category = categoryRepository.findById(id);
-        if(!category.isPresent())throw new UserNotFoundException("Category doesn't exist");
-        categoryRepository.deleteById(id);
+//        Optional<Category> category = categoryRepository.findById(id);
+//        if(!category.isPresent())throw new UserNotFoundException("Category doesn't exist");
+//        categoryRepository.deleteById(id);
+
+        CategoryDto categoryDto = getCategoryById(id);
+        categoryDto.setActive(false);
+        Category category = categoryMapper.categoryDtoToCategory(categoryDto);
+        Category saved = categoryRepository.save(category);
     }
 
     @Override

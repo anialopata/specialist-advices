@@ -51,11 +51,6 @@ export class LoginComponent implements OnInit {
       loggedUser.email = data.email;
       loggedUser.token = data.access_token;
       loggedUser.id = data.userId;
-      loggedUser.phoneNumber = data.phoneNumber;
-      loggedUser.firstName = data.firstName;
-      loggedUser.lastName = data.lastName;
-      loggedUser.pesel = data.pesel;
-      loggedUser.password = data.password;
       loggedUser.roles = data.roles;
 
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));

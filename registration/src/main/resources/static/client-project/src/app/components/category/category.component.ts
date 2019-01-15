@@ -6,6 +6,7 @@ import { SpecialistService } from 'src/app/services/specialist.service';
 import { ChangeDataDialogComponent } from './dialogs/change-data-dialog/change-data-dialog.component';
 import { DeleteCategoryComponent } from './dialogs/delete-category/delete-category.component';
 import { Person } from 'src/app/models/person.model';
+import { SpecialistsDialogComponent } from './history/specialists-dialog/specialists-dialog.component';
 
 @Component({
   selector: 'app-category',
@@ -25,7 +26,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.getCategories().subscribe(data => {
+    this.categoryService.getActiveCategories().subscribe(data => {
       this.dataSource = data;
       console.log(data);
     });
@@ -61,6 +62,8 @@ export class CategoryComponent implements OnInit {
       this.getCategoryData(currentCategory);
     });
   }
+
+ 
 
   deleteCategoryDialog(categoryId: Number) {
     const dialogRef = this.dialog.open(DeleteCategoryComponent, { data: categoryId });

@@ -8,6 +8,7 @@ import { UserVisitsDialogComponent } from '../visit/user-visits-dialog/user-visi
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { DeletePatientComponent } from './dialogs/delete-patient/delete-patient.component';
 import { Person } from 'src/app/models/person.model';
+import { MyVisitsComponent } from '../visit/my-visits/my-visits.component';
 
 @Component({
   selector: 'app-patient',
@@ -33,10 +34,12 @@ export class PatientComponent implements OnInit {
   }
 
   getPatientVisits(currentPatient: Patient) {
-    const dialogRef = this.dialog.open(UserVisitsDialogComponent, { data: currentPatient });
-    dialogRef.afterClosed().subscribe(result => {
-      this.getVisitData(currentPatient);
-    });
+    console.log("wizyty: " + currentPatient.visits);
+    const visits = currentPatient.visits;
+    const dialogRef = this.dialog.open(MyVisitsComponent, { data: currentPatient });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.getVisitData(currentPatient);
+    // });
   }
 
   getVisitData(currentPatient: Patient) {
@@ -46,8 +49,16 @@ export class PatientComponent implements OnInit {
       this.patient.visits = currentPatient.visits;
 
       console.log('wizyty: ' + this.patient.visits);
-    }
-    );
+    });
+    const dialogRef = this.dialog.open(MyVisitsComponent, { data: currentPatient });
+  }
+
+  patientDetails(currentPatient: Patient) { 
+    console.log("wizyty: " + currentPatient.visits);
+    const visits = currentPatient.visits;
+
+    const dialogRef = this.dialog.open(MyVisitsComponent, { data: currentPatient });
+
   }
 
   deletePatientDialog(patientId: Number) {

@@ -21,6 +21,14 @@ export class CategoryService {
             }));
   }
 
+  public getActiveCategories(): Observable<Category[]> {
+    return this.http.get<any>('http://localhost:8080/api/v1/categories/active')
+          .pipe(
+            map(categoriesList => {
+              return categoriesList.categories;
+            }));
+  }
+
   public deleteCategory(id: Number) {
     return this.http.delete<Category>('http://localhost:8080/api/v1/categories/' + id);
   }

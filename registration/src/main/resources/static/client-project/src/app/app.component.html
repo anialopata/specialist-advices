@@ -28,6 +28,7 @@
       <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/specialists/all']">Historia specjalistów</a>
       <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/patients']">Historia pacjentów</a>
       <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/visits']">Historia wizyt</a>
+      <a mat-list-item *ngIf="loggedUser.roles[0].authority === 'ROLE_ADMIN'" [routerLink]="['/categories/all']">Historia kategorii</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

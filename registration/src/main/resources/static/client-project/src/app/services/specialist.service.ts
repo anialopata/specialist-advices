@@ -61,5 +61,9 @@ export class SpecialistService {
     return this.http.post<VisitDto>(`//localhost:8080/api/v1/specialists/${specialistId}/visits/patient/${patientId}`, visit);
   }
 
+  public addSpecialistToCategory(categoryId: number, specialist: Specialist): Observable<any> {
+    return this.http.post<Category>(`http://localhost:8080/api/v1/categories/${categoryId}/specialists`, specialist);
+  }
+
 
 }

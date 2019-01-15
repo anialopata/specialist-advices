@@ -1,21 +1,12 @@
 package com.anialopata.registration.service;
 
 import com.anialopata.registration.dto.CategoryDto;
-import com.anialopata.registration.dto.PatientDto;
-import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.mapper.CategoryMapper;
-import com.anialopata.registration.mapper.PatientMapper;
 import com.anialopata.registration.mapper.SpecialistMapper;
-import com.anialopata.registration.mapper.VisitMapper;
 import com.anialopata.registration.model.Category;
-import com.anialopata.registration.model.Patient;
-import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.repository.CategoryRepository;
-import com.anialopata.registration.repository.PatientRepository;
 import com.anialopata.registration.repository.SpecialistRepository;
-import com.anialopata.registration.repository.VisitRepository;
 import com.anialopata.registration.service.impl.CategoryServiceImpl;
-import com.anialopata.registration.service.impl.PatientServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -27,22 +18,21 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Ania on 2018-12-13.
  */
 public class CategoryServiceTest {
+
     @Mock
     CategoryRepository categoryRepository;
 
-    CategoryMapper categoryMapper = CategoryMapper.INSTANCE;
+    private CategoryMapper categoryMapper = CategoryMapper.INSTANCE;
 
-    CategoryService categoryService;
-    SpecialistMapper specialistMapper = SpecialistMapper.INSTANCE;
-    SpecialistRepository specialistRepository;
+    private CategoryService categoryService;
+    private SpecialistMapper specialistMapper = SpecialistMapper.INSTANCE;
+    private SpecialistRepository specialistRepository;
 
     @Before
     public void setUp() throws Exception {

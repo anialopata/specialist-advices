@@ -1,7 +1,7 @@
  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fredericka+the+Great|Paytone+One|Varela+Round|Catamaran" rel="stylesheet"> 
  <div class = "container">
 
-      <div class="visit_card" *ngIf="currentUser.roles[0].authority === 'ROLE_PATIENT' || currentUser.roles[0].authority === 'ROLE_ADMIN'" (click)="openDetails()">
+      <div class="visit_card" (click)="openDetails()">
             <div class="header-main" [routerLink]="['/reservation']">Umów wizytę</div>
       </div>
 

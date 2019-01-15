@@ -39,6 +39,8 @@ import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { MyVisitsComponent } from './components/visit/my-visits/my-visits.component';
 import { EditProfilComponent } from './components/patient/edit-profil/edit-profil.component';
+import { CategoriesHistoryComponent } from './components/category/history/categories-history/categories-history.component';
+import { SpecialistsDialogComponent } from './components/category/history/specialists-dialog/specialists-dialog.component';
 
 registerLocaleData(localePl);
 
@@ -67,7 +69,9 @@ registerLocaleData(localePl);
     AllSpecialistsComponent,
     DeletePatientComponent,
     MyVisitsComponent,
-    EditProfilComponent
+    EditProfilComponent,
+    CategoriesHistoryComponent,
+    SpecialistsDialogComponent
   ],
   imports: [
     BrowserModule,

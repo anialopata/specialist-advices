@@ -1,6 +1,5 @@
 package com.anialopata.registration.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,8 +47,12 @@ public class User {
                     name = "user_role_id", referencedColumnName = "id"))
     private List<UserRole> roles;
 
-    @JsonCreator
     public User() {
     }
 
+    public User(String username, String password, List<UserRole> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 }

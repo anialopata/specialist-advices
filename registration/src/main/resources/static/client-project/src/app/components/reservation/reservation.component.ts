@@ -25,9 +25,6 @@ export class ReservationComponent implements OnInit {
   categories: Category[] = [];
   category: Category = new Category();
   week: Week;
-  // simpleVisit: SimpleVisit[];
-  // selectedCategory: Category;
-  // selectedSpecialist: Specialist;
   selectedVisit = new Visit();
   weekKeys: string[];
   visit: Visit[];
@@ -53,24 +50,32 @@ createReservation(date: Date) {
 
 getWeek() {
   this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 0).subscribe(data => {
+   // this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), this.addWeek).subscribe(data => {
     const additionalWeek = 7;
     // this.start = new Date();
-    // this.getFreeHours(data, this.start.setDate(this.start.getDate() + 3));
+    // this.getFreeHours(data, this.start.setDate(this.start.getDate() + additionalWeek));
     this.getFreeHours(data, new Date());
     this.weekKeys = Object.keys(this.week);
     console.log(data);
   });
 }
 
-// getWeekPlusOne() {
-//   this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 1).subscribe(data => {
-//     this.getFreeHours(data, new Date());
-//     this.weekKeys = Object.keys(data);
-//     console.log(data);
-//   });
-// }
+getWeekPlusOne() {
+  this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 1).subscribe(data => {
+    this.getFreeHours(data, new Date());
+    this.weekKeys = Object.keys(data);
+    console.log(data);
+  });
+}
 
-// parsowNIE DATY z serwera new Date(date_string)
+
+getWeekPlusTwo() {
+  this.visitService.getSpecialistWeek(this.selectedVisit.specialist.id, new Date(), 2).subscribe(data => {
+    this.getFreeHours(data, new Date());
+    this.weekKeys = Object.keys(data);
+    console.log(data);
+  });
+}
 
   private getCategories() {
     this.categoryService.getCategories().subscribe(data => {
@@ -108,7 +113,7 @@ getWeek() {
 
 private isDateReserved(date: Date, hoursReserved: Week, key: string): boolean {
   return hoursReserved[key].some(visit => {
-    return new Date(visit.date).getHours() === date.getHours(); // po uporzadkowaniu na backendzie przywrocic getTime
+    return new Date(visit.date).getTime() === date.getTime(); // po uporzadkowaniu na backendzie przywrocic getTime
   });
 }
 
@@ -123,10 +128,9 @@ getVisitData(currentVisit: Visit) {
   const note = currentVisit.note;
 
   const dialogRef = this.dialog.open(ShowVisitDetailsDialogComponent, { data: currentVisit });
-  dialogRef.afterClosed().subscribe(result => {
-    this.getVisitData(currentVisit);
-  });
-
 }
 
 }
+
+
+

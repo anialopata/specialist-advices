@@ -27,11 +27,11 @@ public class PatientServiceTest {
     @Mock
     PatientRepository patientRepository;
 
-    PatientMapper patientMapper = PatientMapper.INSTANCE;
+    private PatientMapper patientMapper = PatientMapper.INSTANCE;
 
-    PatientService patientService;
-    VisitMapper visitMapper = VisitMapper.INSTANCE;
-    VisitRepository visitRepository;
+    private PatientService patientService;
+    private VisitMapper visitMapper = VisitMapper.INSTANCE;
+    private VisitRepository visitRepository;
 
     @Before
     public void setUp() throws Exception {

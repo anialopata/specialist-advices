@@ -22,6 +22,9 @@ import { UserVisitsDialogComponent } from './components/visit/user-visits-dialog
 import { AllSpecialistsComponent } from './components/specialist/all-specialists/all-specialists.component';
 import { DeletePatientComponent } from './components/patient/dialogs/delete-patient/delete-patient.component';
 import { EditProfilComponent } from './components/patient/edit-profil/edit-profil.component';
+import { CategoriesHistoryComponent } from './components/category/history/categories-history/categories-history.component';
+import { SpecialistsDialogComponent } from './components/category/history/specialists-dialog/specialists-dialog.component';
+import { MyVisitsComponent } from './components/visit/my-visits/my-visits.component';
 
 
 const routes: Routes = [
@@ -40,6 +43,9 @@ const routes: Routes = [
   { path: 'categories', component: ChangeDataDialogComponent},
   { path: 'categories', component: DeleteCategoryComponent},
   { path: 'category/form', component: CategoryFormComponent},
+  { path: 'categories/all', component: CategoriesHistoryComponent},
+  { path: 'categories/all', component: SpecialistsDialogComponent},
+
 
   { path: 'specialists', component: SpecialistComponent},
   { path: 'specialists', component: ChangeSpecialistDataComponent},
@@ -54,10 +60,12 @@ const routes: Routes = [
   { path: 'specialists/all', component: DeleteSpecialistComponent},
   { path: 'patients', component: PatientComponent},
   { path: 'patients', component: DeletePatientComponent},
+  { path: 'patients', component: MyVisitsComponent},
 
-   { path: 'edit', component: EditProfilComponent}
+  { path: 'edit', component: EditProfilComponent}
 
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

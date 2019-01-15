@@ -10,7 +10,10 @@ import com.anialopata.registration.model.Category;
 import com.anialopata.registration.model.Patient;
 import com.anialopata.registration.model.Specialist;
 import com.anialopata.registration.model.Visit;
-import com.anialopata.registration.repository.*;
+import com.anialopata.registration.repository.CategoryRepository;
+import com.anialopata.registration.repository.PatientRepository;
+import com.anialopata.registration.repository.SpecialistRepository;
+import com.anialopata.registration.repository.VisitRepository;
 import com.anialopata.registration.service.SpecialistService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,8 +22,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.lang.String.format;
 
 /**
  * Created by Ania on 2018-11-11.
@@ -112,6 +113,18 @@ public class SpecialistServiceImpl implements SpecialistService {
         returnedDto.setPassword(passwordEncoder.encode(saved.getPassword()));
         return returnedDto;
 }
+
+    @Override
+    public SpecialistDto updateSpecialist(Long id, SpecialistDto specialistDto) {
+        Specialist specialist = specialistRepository.getOne(id);
+        specialist.setFirstName(specialistDto.getFirstName());
+        specialist.setLastName(specialistDto.getLastName());
+        specialist.setDegree(specialistDto.getDegree());
+        specialist.setDescription(specialistDto.getDescription());
+        specialistRepository.save(specialist);
+        return specialistMapper.specialistToSpecialistDto(specialist);
+    }
+
 
 
     @Override

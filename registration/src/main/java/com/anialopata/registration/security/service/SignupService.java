@@ -3,6 +3,7 @@ package com.anialopata.registration.security.service;
 /**
  * Created by Ania on 2018-11-15.
  */
+
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.mapper.SpecialistMapper;
 import com.anialopata.registration.model.Category;
@@ -14,11 +15,13 @@ import com.anialopata.registration.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.Collections;
 
 @Service
-@javax.transaction.Transactional
+@Transactional
 public class SignupService {
 
     private final UserRepository userRepository;
@@ -52,6 +55,13 @@ public class SignupService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+
+    @PostConstruct
+    private void addAdmin() {
+        userRepository.save(new User("admin", passwordEncoder.encode("admin"),
+                Arrays.asList(new UserRole("ADMIN"))));
+    }
+
 }
 
 

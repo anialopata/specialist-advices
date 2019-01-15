@@ -49,13 +49,11 @@ export class SpecialistFormComponent implements OnInit {
       });
   }
 
-  // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
       this.submitted = true;
 
-      // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
       }

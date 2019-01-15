@@ -33,7 +33,6 @@ public class Specialist extends User {
     @ManyToOne
             (cascade = {
                     CascadeType.PERSIST,
-                    CascadeType.MERGE,
                     CascadeType.DETACH,
                     CascadeType.REFRESH})
     @JoinColumn(name="category_id")

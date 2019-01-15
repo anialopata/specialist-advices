@@ -1,6 +1,5 @@
 package com.anialopata.registration.service;
 
-import com.anialopata.registration.dto.PatientDto;
 import com.anialopata.registration.dto.SpecialistDto;
 import com.anialopata.registration.dto.VisitDto;
 
@@ -40,6 +39,8 @@ public interface SpecialistService  {
      * @return SpecialistDto instance
      */
     SpecialistDto saveSpecialistByDto(Long id, SpecialistDto specialistDto);
+
+    SpecialistDto updateSpecialist(Long id, SpecialistDto specialistDto);
 
     /**
      *
